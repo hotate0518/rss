@@ -1,14 +1,14 @@
 <template>
-    <button class="btn bg-primary" @click="Submit()">★</button>
+  <button class="btn bg-primary" @click="Submit()">★</button>
 </template>
 
 <script>
 export default {
-    methods: {
-        Submit() {
-            this.$emit("Favorite");
-        }
+  methods: {
+    Submit() {
+      this.$emit("Favorite");
     }
+  }
 }
 </script>
 

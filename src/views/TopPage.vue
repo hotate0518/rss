@@ -1,50 +1,45 @@
 <template>
-  <div>
-    <pull-to @top-pull="getRss()">
-      <Magazine  class="toppage" v-for="item in magazins" :key="item.id" :magazine="item"/>
-    </pull-to>
+  <div class="top-page">
+    <div class="tab-area">
+     <Tab v-for="tab in tabs" v-bind="tab" :key="tab.id" v-model="currentId"/>
+    </div>
+    <div class="contents-area">
+      <MagazineView v-show="isActive(1)" />
+    </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-import Magazine from '../components/Magazine.vue'
-import PullTo from 'vue-pull-to'
-
-const url = "http://localhost:8081"
+import Tab from '../components/Tab.vue'
+import MagazineView from './MagazineView.vue'
 export default {
   components: {
-    Magazine,
-    PullTo
-  }, 
+    Tab,
+    MagazineView
+  },
   data() {
     return {
-      magazins: []
+      currentId: 1,
+      tabs: [{
+        id: 1,
+        label: '本日の記事',
+        contents: "MagazineView"
+      },{
+        id: 2,
+        label: 'サイト一覧',
+        contents: "サイト一覧"
+      }]
     }
   },
   methods: {
-    getRss() {
-      axios.get(url)
-      .then(result => {
-        this.magazins = [];
-        result.data.forEach(el => {
-          console.log(el)
-          this.magazins.push(el);
-        });
-      })
-      .catch(err => {})
+    isActive(id) {
+      return id === this.currentId;
     }
-  },
-  mounted() {
-    this.getRss();
   }
 }
 </script>
 
 <style scoped>
-.toppage {
-
-}
 </style>
 
 
