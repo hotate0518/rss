@@ -1,5 +1,10 @@
 # Rss
 
+### ノウハウ
+- .eslintrc
+ - root: true->親階層の.eslintrcを見に行かなくなる
+ - extends: ルールの拡張
+
 ## Project setup
 ```
 npm install
@@ -19,3 +24,5 @@ npm run build
 ```
 npm run lint
 ```
+
+
