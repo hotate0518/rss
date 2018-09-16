@@ -1,0 +1,14 @@
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "vue",
+    "plugin:vue/essential",
+    "eslint:recommended"
+  ],
+  "rules": {
+    "no-console": "off"
+  }
+}
