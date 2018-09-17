@@ -1,20 +1,12 @@
 <template>
-  <div class="container magazine">
+  <div class="container homepage">
     <div class="row">
       <span class="title col-lg-10">
-      <a :href=magazine.mediaUrl target="_blank">{{magazine.title}}</a>
-      </span>
-    </div>
-    <div class="row">
-      <span class="sitename col-lg-12">
-        <p>{{magazine.site}}</p>
+        <a :href=item.homepage target="_blank">{{item.title}}</a>
       </span>
     </div>
     <div class="row">
       <Favorite class="col-lg-1" />
-      <span class="date col-lg-11">
-        <p>{{magazine.date}}</p>
-      </span>
     </div>
   </div>
 </template>
@@ -27,7 +19,7 @@ export default {
     Favorite
   },
   props: {
-    magazine: {}
+    item: {}
   },
   data () {
     return {
@@ -41,27 +33,14 @@ export default {
 </script>
 
 <style scoped>
-.magazine {
+.homepage {
   border: 1px solid;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 5px;
 }
 .title {
+  font-size: 25px;
   text-align: left
-}
-.information {
-  text-align: right
-}
-.sitename {
-  font-size: 10px;
-  text-align: right
-}
-.date {
-  font-size: 5px;
-  text-align: right
-}
-.thumbnail {
-  text-align: right
 }
 </style>
