@@ -1,22 +1,20 @@
 <template>
   <div>
-    <button class="btn bg-danger" @click="getRss()" v-show=isEmpty>再読込</button>
-    <pull-to @top-pull="getRss()">
-      <Magazine v-for="item in articles" :key="item.id" :magazine="item"/>
-    </pull-to>
+    <button class="btn bg-danger" @click="getRss"  v-show=isEmpty>再読込</button>
+    <Magazine v-for="item in articles" :key="item.id" :magazine="item"/>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import Magazine from '../components/Magazine.vue'
-import PullTo from 'vue-pull-to'
+
 import {getArticles} from '../commons/url'
 
 export default {
   components: {
     Magazine,
-    PullTo
+
   }, 
   mounted() {
     this.getRss();
