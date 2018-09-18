@@ -1,54 +1,59 @@
 <template>
   <div>
-    <button class="btn bg-danger" @click="getRss"  v-show=isEmpty>再読込</button>
-    <Magazine v-for="item in articles" :key="item.id" :magazine="item"/>
+    <button
+      v-show="isEmpty"
+      class="btn bg-danger"
+      @click="getRss">再読込</button>
+    <Magazine
+      v-for="item in articles"
+      :key="item.id"
+      :magazine="item" />
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-import Magazine from '../components/Magazine.vue'
+import axios from 'axios';
+import Magazine from '../components/Magazine.vue';
 
-import {getArticles} from '../commons/url'
+import { getArticles } from '../commons/url';
 
 export default {
   components: {
     Magazine,
 
-  }, 
-  mounted() {
-    this.getRss();
   },
   data() {
     return {
       articles: [],
-      loading: false
-    }
+      loading: false,
+    };
   },
   computed: {
     isEmpty() {
       return !this.loading && this.articles.length === 0;
-    }
+    },
+  },
+  mounted() {
+    this.getRss();
   },
   methods: {
-    async getRss() {
+    getRss() {
       this.loading = true;
-      await axios.get(getArticles + '?nocache=' + new Date().getTime())
-      .then(result => {
-        this.articles = [];
-        result.data.forEach(el => {
-          this.articles.push(el);
-        });       
-      })
-      .catch(err => {
-      })
-      this.loading = false;
-    }
-  }
-}
+      axios.get(`${getArticles}?nocache=${new Date().getTime()}`)
+        .then((result) => {
+          this.articles = [];
+          result.data.forEach((el) => {
+            this.articles.push(el);
+          });
+          this.loading = false;
+        })
+        .catch(() => {
+          this.loading = false;
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 </style>
-

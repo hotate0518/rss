@@ -2,34 +2,43 @@
   <div class="container homepage">
     <div class="row">
       <span class="title col-lg-10">
-        <a :href=item.homepage target="_blank">{{item.title}}</a>
+        <a
+          :href="item.homepage"
+          target="_blank">{{ item.title }}</a>
       </span>
     </div>
     <div class="row">
-      <Favorite class="col-lg-1" label="★" />
+      <Favorite
+        class="col-lg-1"
+        label="★" />
     </div>
   </div>
 </template>
 
 <script>
-import image from '../assets/logo.png'
-import Favorite from './Button.vue'
+import image from '../assets/logo.png';
+import Favorite from './Button.vue';
+
 export default {
   components: {
-    Favorite
+    Favorite,
   },
   props: {
-    item: {}
+    item: {
+      type: Object,
+      required: true,
+      default: () => {},
+    },
   },
-  data () {
+  data() {
     return {
-      thumbnail: image
-    }
+      thumbnail: image,
+    };
   },
   methods: {
 
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -41,6 +50,6 @@ export default {
 }
 .title {
   font-size: 25px;
-  text-align: left
+  text-align: left;
 }
 </style>

@@ -2,47 +2,62 @@
   <div class="container magazine">
     <div class="row">
       <span class="title col-lg-10">
-      <a :href=magazine.mediaUrl target="_blank">{{magazine.title}}</a>
+        <a
+          :href="magazine.mediaUrl"
+          target="_blank">{{ magazine.title }}</a>
       </span>
     </div>
     <div class="row">
       <span class="sitename col-lg-12">
-        <p>{{magazine.site}}</p>
+        <p>{{ magazine.site }}</p>
       </span>
     </div>
     <div class="row">
-      <Favorite class="col-lg-1" label="★" @click=FAVORITE(magazine) v-if="!hideFavorite"/>
+      <Favorite
+        v-if="!hideFavorite"
+        class="col-lg-1"
+        label="★"
+        @click="FAVORITE(magazine)" />
       <span class="date col-lg-11">
-        <p>{{magazine.date}}</p>
+        <p>{{ magazine.date }}</p>
       </span>
     </div>
   </div>
 </template>
 
 <script>
-import image from '../assets/logo.png'
-import Favorite from './Button.vue'
-import { mapActions } from 'vuex'
-import { FAVORITE } from "../store/mutation-types";
+import { mapActions } from 'vuex';
+import image from '../assets/logo.png';
+import Favorite from './Button.vue';
+import { FAVORITE } from '../store/mutation-types';
+
 export default {
   components: {
-    Favorite
+    Favorite,
   },
   props: {
-    magazine: {},
-    hideFavorite: {}
+    magazine: {
+      type: Object,
+      required: true,
+      default: () => {},
+    },
+    hideFavorite: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
-  data () {
+  data() {
     return {
-      thumbnail: image
-    }
+      thumbnail: image,
+    };
   },
   methods: {
     ...mapActions([
-      FAVORITE
-    ])
-  }
-}
+      FAVORITE,
+    ]),
+  },
+};
 </script>
 
 <style scoped>
@@ -53,20 +68,20 @@ export default {
   margin-bottom: 5px;
 }
 .title {
-  text-align: left
+  text-align: left;
 }
 .information {
-  text-align: right
+  text-align: right;
 }
 .sitename {
   font-size: 10px;
-  text-align: right
+  text-align: right;
 }
 .date {
   font-size: 5px;
-  text-align: right
+  text-align: right;
 }
 .thumbnail {
-  text-align: right
+  text-align: right;
 }
 </style>

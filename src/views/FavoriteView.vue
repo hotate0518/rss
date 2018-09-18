@@ -1,19 +1,23 @@
 <template>
   <div>
-    <Favorite  v-for="item in getFavorites" :key="item.id" :magazine="item" hideFavorite="true"/>
+    <Favorite
+      v-for="item in getFavorites"
+      :key="item.id"
+      :magazine="item"
+      hide-favorite="true" />
   </div>
 </template>
 
 <script>
-import Favorite from '../components/Favorite.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex';
+import Favorite from '../components/Favorite.vue';
 
 export default {
   components: {
-    Favorite
-  }, 
+    Favorite,
+  },
   computed: {
-    ...mapGetters(['getFavorites'])
-  }
-}
+    ...mapGetters(['getFavorites']),
+  },
+};
 </script>

@@ -19,8 +19,11 @@
     "@vue/cli-plugin-babel": "^3.0.3",
     "@vue/cli-plugin-eslint": "^3.0.3",
     "@vue/cli-service": "^3.0.3",
-    "eslint-config-vue": "^2.0.2",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-vue": "^4.7.1",
     "prettier": "^1.14.2",
     "vue-cli-plugin-bootstrap": "^1.0.0-alpha.0",
@@ -35,5 +38,6 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "format": "./node_modules/.bin/prettier --write \"js/**/*.{js,vue}\""
 }

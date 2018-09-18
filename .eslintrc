@@ -4,11 +4,12 @@
     "node": true
   },
   "extends": [
-    "vue",
-    "plugin:vue/essential",
-    "eslint:recommended"
+    "airbnb",
+    "plugin:vue/recommended"
   ],
   "rules": {
-    "no-console": "off"
+    "no-console": "off",
+    "linebreak-style": ["error", "windows"],
+    "import/no-extraneous-dependencies": "off"
   }
 }
