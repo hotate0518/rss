@@ -24,7 +24,7 @@ export default {
 
 <style scoped>
 .active {
-  background: #f7c9c9
+  background: #2F01F0
 }
 </style>
 

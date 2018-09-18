@@ -6,14 +6,14 @@
       </span>
     </div>
     <div class="row">
-      <Favorite class="col-lg-1" />
+      <Favorite class="col-lg-1" label="★" />
     </div>
   </div>
 </template>
 
 <script>
 import image from '../assets/logo.png'
-import Favorite from './Favorite.vue'
+import Favorite from './Button.vue'
 export default {
   components: {
     Favorite

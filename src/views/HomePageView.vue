@@ -10,8 +10,8 @@
 import axios from 'axios'
 import HomePage from '../components/HomePage.vue'
 import PullTo from 'vue-pull-to'
+import {getHomePages} from '../commons/url'
 
-const url = "http://localhost:8081/get-homepages"
 export default {
   components: {
     HomePage,
@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     getRss() {
-      axios.get(url)
+      axios.get(getHomePages)
       .then(result => {
         this.homepages = [];
         result.data.forEach(el => {

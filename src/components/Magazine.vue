@@ -11,7 +11,7 @@
       </span>
     </div>
     <div class="row">
-      <Favorite class="col-lg-1" />
+      <Favorite class="col-lg-1" label="★" @click=FAVORITE(magazine) v-if="!hideFavorite"/>
       <span class="date col-lg-11">
         <p>{{magazine.date}}</p>
       </span>
@@ -21,13 +21,16 @@
 
 <script>
 import image from '../assets/logo.png'
-import Favorite from './Favorite.vue'
+import Favorite from './Button.vue'
+import { mapActions } from 'vuex'
+import { FAVORITE } from "../store/mutation-types";
 export default {
   components: {
     Favorite
   },
   props: {
-    magazine: {}
+    magazine: {},
+    hideFavorite: {}
   },
   data () {
     return {
@@ -35,7 +38,9 @@ export default {
     }
   },
   methods: {
-
+    ...mapActions([
+      FAVORITE
+    ])
   }
 }
 </script>

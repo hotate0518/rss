@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button class="btn" @click="getRss()" v-show=isEmpty>再読込</button>
+    <button class="btn bg-danger" @click="getRss()" v-show=isEmpty>再読込</button>
     <pull-to @top-pull="getRss()">
-      <Magazine  class="top-page" v-for="item in magazins" :key="item.id" :magazine="item"/>
+      <Magazine v-for="item in articles" :key="item.id" :magazine="item"/>
     </pull-to>
   </div>
 </template>
@@ -11,43 +11,40 @@
 import axios from 'axios'
 import Magazine from '../components/Magazine.vue'
 import PullTo from 'vue-pull-to'
+import {getArticles} from '../commons/url'
 
-const url = "http://localhost:8081/get-articles"
 export default {
   components: {
     Magazine,
     PullTo
   }, 
-  computed: {
-    isEmpty() {
-      console.log(this.loading || this.magazins.length === 0)
-      return !this.loading && this.magazins.length === 0;
-    }
-  },
   mounted() {
     this.getRss();
   },
-  methods: {
-    getRss() {
-      this.loading = true;
-      axios.get(url)
-      .then(result => {
-        this.magazins = [];
-        result.data.forEach(el => {
-          console.log(el)
-          this.magazins.push(el);
-        });
-        this.loading = false;
-      })
-      .catch(err => {
-        this.loading = false;
-      })
-    }
-  },
   data() {
     return {
-      magazins: [],
+      articles: [],
       loading: false
+    }
+  },
+  computed: {
+    isEmpty() {
+      return !this.loading && this.articles.length === 0;
+    }
+  },
+  methods: {
+    async getRss() {
+      this.loading = true;
+      await axios.get(getArticles + '?nocache=' + new Date().getTime())
+      .then(result => {
+        this.articles = [];
+        result.data.forEach(el => {
+          this.articles.push(el);
+        });       
+      })
+      .catch(err => {
+      })
+      this.loading = false;
     }
   }
 }
