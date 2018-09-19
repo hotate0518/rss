@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p v-show="loading">Now loading...</p>
     <button
       v-show="isEmpty"
       class="btn bg-danger"
@@ -20,7 +21,6 @@ import { getArticles } from '../commons/url';
 export default {
   components: {
     Magazine,
-
   },
   data() {
     return {
@@ -39,7 +39,7 @@ export default {
   methods: {
     getRss() {
       this.loading = true;
-      axios.get(`${getArticles}?nocache=${new Date().getTime()}`)
+      axios.get(getArticles)
         .then((result) => {
           this.articles = [];
           result.data.forEach((el) => {
