@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { FAVORITE, REGISTER } from './mutation-types';
+import { REGISTER } from './mutation-types';
 
 Vue.use(Vuex);
 
@@ -17,7 +17,10 @@ export default new Vuex.Store({
         console.log('This article has already been liked.');
         return;
       }
-      commit(FAVORITE, article);
+      commit(REGISTER, [
+        ...state.articles,
+        article,
+      ]);
     },
     // クリックした記事を削除する。
     DELETE_FAVORITE: ({ commit, state }, id) => {
