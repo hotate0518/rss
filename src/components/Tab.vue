@@ -1,6 +1,6 @@
 <template>
   <button
-    :class="[isActive, 'btn']"
+    :class="[isActive, 'btn', 'tab-btn']"
     @click="Submit()">{{ label }}</button>
 </template>
 
@@ -15,14 +15,14 @@ export default {
       type: String,
       default: '',
     },
-    clickedId: {
+    value: {
       type: Number,
       default: 1,
     },
   },
   computed: {
     isActive() {
-      return this.clickedId === this.id ? 'active' : false;
+      return this.value === this.id ? 'active' : false;
     },
   },
   methods: {
@@ -34,7 +34,11 @@ export default {
 </script>
 
 <style scoped>
+.tab-btn {
+  border: #6699FF solid;
+  background-color: wheat;
+}
 .active {
-  background: #2f01f0;
+  background: #6699FF;
 }
 </style>

@@ -64,8 +64,14 @@ export default {
 .tab-area {
   text-align: left;
 }
+.contents-area {
+  height: 75vh;
+  border: 1px solid;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
 .left-area,
 .right-area {
-  border: 1px solid;
+  border: 0px solid;
 }
 </style>

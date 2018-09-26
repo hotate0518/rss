@@ -19,7 +19,7 @@
         label="★"
         @click="FAVORITE(magazine)" />
       <span class="date col-lg-11">
-        <p>{{ magazine.date }}</p>
+        {{ magazine.date }}
       </span>
     </div>
   </div>
@@ -65,7 +65,7 @@ export default {
   border: 1px solid;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
 }
 .title {
   text-align: left;
@@ -78,8 +78,9 @@ export default {
   text-align: right;
 }
 .date {
-  font-size: 5px;
+  font-size: 10px;
   text-align: right;
+  margin: 0;
 }
 .thumbnail {
   text-align: right;
